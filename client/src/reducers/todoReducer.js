@@ -7,7 +7,7 @@ export const initialState = {
 }
 
 
-export const mainReducer = (state, action) => {
+export const todoReducer = (state, action) => {
 
 
     return state;
