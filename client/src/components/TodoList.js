@@ -9,12 +9,39 @@ const TodoList = () => {
     const [newTodo, setNewTodo] = useState('');
 
 
+    const handleChanges = e => {
+        setNewTodo(e.target.vaue)
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        dispatch({type: 'ADD_TODO', 
+            payload: {
+                item: newTodo,
+                id: Date.now(),
+                completed: false
+            }})
+    }
+
     return(
         <div>
-            <h1> Todo List</h1>
-            <div className="todo-list">
-                <p>{state.item}</p>
-            </div>
+            {state.todos.map((state) => {
+                 return <Todo key={state.id} state={state} />
+            })}
+           
+
+            <form >
+                <input 
+                type="text"
+                name="newTodo"
+                placeholder="New Todo"
+                value={newTodo}
+                onChange={handleChanges}
+
+                />
+
+                <button>Add</button>
+            </form>
 
         </div>
     )
